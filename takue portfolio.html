@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>takue_portfolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#3b82f6',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hero-section {
+            background-image: url('https://readdy.ai/api/search-image?query=modern%20IT%20professional%20workspace%20with%20elegant%20desk%20setup%2C%20computer%20monitors%20showing%20code%2C%20soft%20lighting%2C%20minimalist%20design%2C%20professional%20atmosphere%2C%20subtle%20technology%20elements%2C%20clean%20workspace%2C%20high-quality%20professional%20environment&width=1920&height=1080&seq=hero1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .hero-content {
+            background: linear-gradient(90deg, rgba(255,255,255,0.95) 50%, rgba(255,255,255,0) 100%);
+        }
+        .section-heading::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: #3b82f6;
+            margin-top: 8px;
+        }
+        .skill-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s;
+        }
+        .nav-link.active::after,
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .custom-checkbox {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #d1d5db;
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.2s;
+            position: relative;
+            cursor: pointer;
+        }
+        .custom-checkbox:checked {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        .custom-checkbox:checked::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 6px;
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header Section -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+         <a href="#" class="text-2xl font-['Pacifico'] text-primary">
+            <img src="Images/logo.jpeg" alt="Logo" class="h-5 w-auto" />
+         </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link active text-gray-800 hover:text-primary font-medium transition-colors">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-primary font-medium transition-colors">About</a>
+                <a href="#skills" class="nav-link text-gray-800 hover:text-primary font-medium transition-colors">Skills</a>
+                <a href="#gallery" class="nav-link text-gray-800 hover:text-primary font-medium transition-colors">Gallery</a>
+                <a href="#contact" class="nav-link text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
+            </nav>
+            
+            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700" id="mobile-menu-button">
+                <i class="ri-menu-line ri-2x"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-gray-800 hover:text-primary font-medium py-2 transition-colors">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium py-2 transition-colors">About</a>
+                <a href="#skills" class="text-gray-800 hover:text-primary font-medium py-2 transition-colors">Skills</a>
+                <a href="#gallery" class="text-gray-800 hover:text-primary font-medium py-2 transition-colors">Gallery</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium py-2 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section min-h-[600px] flex items-center">
+        <div class="container mx-auto w-full">
+            <div class="hero-content px-6 py-16 md:py-24 max-w-3xl">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Takue Professional Portfolio</h1>
+                <p class="text-xl text-gray-700 mb-8">Specialized in networking, hardware solutions, and database management with a passion for innovative technology.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#gallery" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition-colors shadow-md whitespace-nowrap">View My Work</a>
+                    <a href="#contact" class="bg-white text-primary border border-primary px-6 py-3 !rounded-button font-medium hover:bg-gray-50 transition-colors shadow-sm whitespace-nowrap">Get In Touch</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl font-bold text-gray-900 mb-12 inline-block">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row gap-12 items-center">
+                <div class="md:w-2/5">
+                    <img src="Images/takue.jpg" alt="My Professional Image" class="rounded-lg shadow-lg w-full object-cover object-top">
+                </div>
+                
+                <div class="md:w-3/5">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Professional Background</h3>
+                    <p class="text-gray-700 mb-6">I am a dedicated IT professional with a strong academic foundation and practical experience in the field. My journey in technology began at Chinhoyi University of Technology, where I developed a comprehensive understanding of information systems and computer networks.</p>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-3">Education</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                            <h5 class="font-medium text-gray-900">Chinhoyi University of Technology</h5>
+                            <p class="text-gray-600">Bachelor of Science in Information Technology</p>
+                            <p class="text-gray-500 text-sm">2022 - 2026</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-3">Professional Experience</h4>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h5 class="font-medium text-gray-900">The Wattle Company</h5>
+                            <p class="text-gray-600">IT Support Specialist (Industrial Attachment)</p>
+                            <p class="text-gray-500 text-sm">October 2024 - July 2025</p>
+                            <ul class="mt-2 text-gray-700 list-disc list-inside">
+                                <li>Provided technical support for network infrastructure</li>
+                                <li>Performed hardware diagnostics and repairs</li>
+                                <li>Assisted in database management and optimization</li>
+                                <li>Collaborated on software implementation projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl font-bold text-gray-900 mb-12 inline-block">Skills & Expertise</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Networking Skills -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-router-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Networking</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Network Configuration</span>
+                                <span class="text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Cisco Networking</span>
+                                <span class="text-gray-500">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 55%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Network Security</span>
+                                <span class="text-gray-500">78%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 78%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">VPN Configuration</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hardware Skills -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-computer-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Hardware</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">PC Troubleshooting</span>
+                                <span class="text-gray-500">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Server Maintenance</span>
+                                <span class="text-gray-500">82%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 82%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Peripheral Setup</span>
+                                <span class="text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Hardware Diagnostics</span>
+                                <span class="text-gray-500">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database Skills -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-database-2-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Database</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">SQL</span>
+                                <span class="text-gray-500">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 88%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">MySQL</span>
+                                <span class="text-gray-500">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Database Design</span>
+                                <span class="text-gray-500">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Data Migration</span>
+                                <span class="text-gray-500">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Software Skills -->
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="ri-code-s-slash-line ri-lg text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Software</h3>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Windows Server</span>
+                                <span class="text-gray-500">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Linux Administration</span>
+                                <span class="text-gray-500">30%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Microsoft Office Suite</span>
+                                <span class="text-gray-500">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span class="text-gray-700">Virtualization</span>
+                                <span class="text-gray-500">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Professional Strengths -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-8">Professional Strengths</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-lightbulb-line ri-xl text-primary"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Problem Solving</h4>
+                        <p class="text-gray-600">Analytical approach to identifying and resolving complex technical issues efficiently.</p>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-team-line ri-xl text-primary"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Collaboration</h4>
+                        <p class="text-gray-600">Strong ability to work in teams, communicate effectively, and share knowledge.</p>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-lg shadow-md flex flex-col items-center text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-search-eye-line ri-xl text-primary"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-2">Attention to Detail</h4>
+                        <p class="text-gray-600">Meticulous approach to work, ensuring accuracy and thoroughness in all tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl font-bold text-gray-900 mb-12 inline-block">Project Gallery</h2>
+            
+            <div class="mb-8">
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <button class="filter-btn active bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap" data-filter="all">All Projects</button>
+                    <button class="filter-btn bg-white text-gray-700 border border-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap" data-filter="network">Networking</button>
+                    <button class="filter-btn bg-white text-gray-700 border border-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap" data-filter="database">Database</button>
+                    <button class="filter-btn bg-white text-gray-700 border border-gray-300 px-4 py-2 !rounded-button font-medium hover:bg-gray-50 transition-colors whitespace-nowrap" data-filter="system">System Integration</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card" data-category="network">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20network%20infrastructure%20setup%20with%20server%20racks%2C%20organized%20cables%2C%20modern%20equipment%2C%20clean%20installation%2C%20technical%20environment%2C%20enterprise-grade%20hardware%2C%20detailed%20networking%20equipment&width=600&height=400&seq=project1&orientation=landscape" alt="Network Infrastructure Project" class="w-full h-56 object-cover object-top">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Corporate Network Infrastructure</h3>
+                            <p class="text-gray-600 mb-4">Designed and implemented a scalable network infrastructure for a medium-sized enterprise, including VLANs, security protocols, and redundancy systems.</p>
+                            <button class="view-project bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card" data-category="database">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=database%20management%20system%20visualization%2C%20data%20structure%20diagrams%2C%20SQL%20interface%2C%20organized%20data%20tables%2C%20professional%20database%20design%2C%20clean%20visualization%20of%20database%20architecture%2C%20technical%20database%20schema&width=600&height=400&seq=project2&orientation=landscape" alt="Database Management Project" class="w-full h-56 object-cover object-top">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Inventory Management Database</h3>
+                            <p class="text-gray-600 mb-4">Developed a comprehensive database system for inventory tracking, with optimized queries and reporting features for a manufacturing company.</p>
+                            <button class="view-project bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card" data-category="system">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=system%20integration%20project%2C%20connected%20software%20systems%2C%20API%20integration%20visualization%2C%20enterprise%20software%20architecture%2C%20professional%20IT%20systems%20diagram%2C%20technical%20system%20integration%2C%20detailed%20software%20connectivity&width=600&height=400&seq=project3&orientation=landscape" alt="System Integration Project" class="w-full h-56 object-cover object-top">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">ERP System Integration</h3>
+                            <p class="text-gray-600 mb-4">Successfully integrated multiple business systems into a unified ERP solution, streamlining operations and improving data consistency.</p>
+                            <button class="view-project bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card" data-category="network">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=secure%20network%20implementation%2C%20cybersecurity%20visualization%2C%20firewall%20setup%2C%20network%20security%20architecture%2C%20professional%20IT%20security%20system%2C%20technical%20security%20implementation%2C%20detailed%20network%20protection&width=600&height=400&seq=project4&orientation=landscape" alt="Network Security Project" class="w-full h-56 object-cover object-top">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Network Security Overhaul</h3>
+                            <p class="text-gray-600 mb-4">Implemented comprehensive security measures including firewall configuration, intrusion detection systems, and security policies for a financial institution.</p>
+                            <button class="view-project bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card" data-category="database">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=data%20migration%20project%2C%20database%20transfer%20visualization%2C%20ETL%20process%2C%20professional%20data%20transformation%2C%20technical%20data%20migration%2C%20detailed%20database%20conversion%2C%20clean%20data%20transfer%20architecture&width=600&height=400&seq=project5&orientation=landscape" alt="Data Migration Project" class="w-full h-56 object-cover object-top">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Legacy Data Migration</h3>
+                            <p class="text-gray-600 mb-4">Successfully migrated critical business data from legacy systems to modern database architecture with zero data loss and minimal downtime.</p>
+                            <button class="view-project bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card" data-category="system">
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=cloud%20infrastructure%20deployment%2C%20virtualization%20setup%2C%20server%20virtualization%2C%20professional%20cloud%20architecture%2C%20technical%20virtual%20environment%2C%20detailed%20cloud%20system%2C%20clean%20virtual%20server%20implementation&width=600&height=400&seq=project6&orientation=landscape" alt="Virtualization Project" class="w-full h-56 object-cover object-top">
+                        <div class="p-5">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">Server Virtualization</h3>
+                            <p class="text-gray-600 mb-4">Designed and implemented a virtualized server environment, reducing hardware costs by 40% while improving system performance and reliability.</p>
+                            <button class="view-project bg-primary text-white px-4 py-2 !rounded-button font-medium hover:bg-blue-600 transition-colors whitespace-nowrap">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modal-title" class="text-2xl font-semibold text-gray-800"></h3>
+                    <button id="close-modal" class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700">
+                        <i class="ri-close-line ri-lg"></i>
+                    </button>
+                </div>
+                
+                <img id="modal-image" src="" alt="Project Details" class="w-full h-auto rounded-lg mb-6">
+                
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Project Overview</h4>
+                    <p id="modal-description" class="text-gray-700"></p>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Technologies Used</h4>
+                    <div id="modal-technologies" class="flex flex-wrap gap-2"></div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Key Achievements</h4>
+                    <ul id="modal-achievements" class="list-disc list-inside text-gray-700"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="section-heading text-3xl font-bold text-gray-900 mb-12 inline-block">Get In Touch</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                    <p class="text-gray-700 mb-8">I'm always open to discussing new projects, opportunities in the IT field, or potential collaborations. Feel free to reach out using the contact form or through my professional networks.</p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-mail-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">ruziwatakundanashe@gmail.com</span>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-phone-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">+263 788 7726 48</span>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="ri-map-pin-line text-primary"></i>
+                            </div>
+                            <span class="text-gray-700">Mutare, Zimbabwe</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">Connect With Me</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-primary hover:bg-blue-200 transition-colors">
+                                <i class="ri-linkedin-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-primary hover:bg-blue-200 transition-colors">
+                                <i class="ri-github-fill"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-primary hover:bg-blue-200 transition-colors">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <form id="contact-form" class="bg-white p-6 rounded-lg shadow-md">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your name">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Message subject">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your message"></textarea>
+                        </div>
+                        
+                        <div class="mb-6 flex items-center">
+                            <input type="checkbox" id="consent" class="custom-checkbox">
+                            <label for="consent" class="ml-2 text-gray-700">I consent to having this website store my submitted information</label>
+                        </div>
+                        
+                        <button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-blue-600 transition-colors shadow-md whitespace-nowrap">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+               <a href="#" class="text-2xl font-['Pacifico'] text-primary">
+                    <img src="Images/logo.jpeg" alt="Logo" class="h-10 w-auto" />
+               </a>
+                
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-300 hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors">About</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#gallery" class="text-gray-300 hover:text-white transition-colors">Gallery</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors">Contact</a>
+                </div>
+            </div>
+            
+            <hr class="border-gray-700 mb-8">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 Takue IT Professional Portfolio. All rights reserved.</p>
+                
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center opacity-0 invisible transition-all duration-300">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script id="mobile-menu-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+
+    <script id="navigation-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            function highlightNavLink() {
+                let scrollPosition = window.scrollY;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', highlightNavLink);
+            highlightNavLink();
+        });
+    </script>
+
+    <script id="back-to-top-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            function toggleBackToTopButton() {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.remove('opacity-0', 'invisible');
+                    backToTopButton.classList.add('opacity-100', 'visible');
+                } else {
+                    backToTopButton.classList.remove('opacity-100', 'visible');
+                    backToTopButton.classList.add('opacity-0', 'invisible');
+                }
+            }
+            
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            window.addEventListener('scroll', toggleBackToTopButton);
+            toggleBackToTopButton();
+        });
+    </script>
+
+    <script id="project-filter-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => btn.classList.remove('active', 'bg-primary', 'text-white'));
+                    filterButtons.forEach(btn => btn.classList.add('bg-white', 'text-gray-700', 'border', 'border-gray-300'));
+                    this.classList.remove('bg-white', 'text-gray-700', 'border', 'border-gray-300');
+                    this.classList.add('active', 'bg-primary', 'text-white');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+    <script id="project-modal-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewProjectButtons = document.querySelectorAll('.view-project');
+            const projectModal = document.getElementById('project-modal');
+            const closeModalButton = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalImage = document.getElementById('modal-image');
+            const modalDescription = document.getElementById('modal-description');
+            const modalTechnologies = document.getElementById('modal-technologies');
+            const modalAchievements = document.getElementById('modal-achievements');
+            
+            // Project details data
+            const projectDetails = {
+                "Corporate Network Infrastructure": {
+                    image: "https://readdy.ai/api/search-image?query=professional%20network%20infrastructure%20setup%20with%20server%20racks%2C%20organized%20cables%2C%20modern%20equipment%2C%20clean%20installation%2C%20technical%20environment%2C%20enterprise-grade%20hardware%2C%20detailed%20networking%20equipment&width=1200&height=800&seq=project1_large&orientation=landscape",
+                    description: "This project involved designing and implementing a comprehensive network infrastructure for a medium-sized enterprise with multiple departments and locations. The solution included advanced routing, switching, and security components to ensure reliable and secure connectivity across the organization.",
+                    technologies: ["Cisco Networking", "VLANs", "Firewall Configuration", "Network Monitoring", "Redundancy Systems"],
+                    achievements: [
+                        "Reduced network downtime by 99.9% through implementation of redundant systems",
+                        "Improved network performance by 45% through optimized routing and QoS configuration",
+                        "Implemented segmentation that enhanced security while maintaining seamless connectivity",
+                        "Designed a scalable solution capable of accommodating 200% growth without major redesign"
+                    ]
+                },
+                "Inventory Management Database": {
+                    image: "https://readdy.ai/api/search-image?query=database%20management%20system%20visualization%2C%20data%20structure%20diagrams%2C%20SQL%20interface%2C%20organized%20data%20tables%2C%20professional%20database%20design%2C%20clean%20visualization%20of%20database%20architecture%2C%20technical%20database%20schema&width=1200&height=800&seq=project2_large&orientation=landscape",
+                    description: "Developed a comprehensive database system for inventory tracking and management for a manufacturing company. The solution included custom-built queries, reporting features, and integration with existing ERP systems to provide real-time inventory visibility and control.",
+                    technologies: ["MySQL", "SQL", "Database Optimization", "ETL Processes", "Reporting Tools"],
+                    achievements: [
+                        "Reduced inventory discrepancies by 87% through improved tracking mechanisms",
+                        "Decreased time spent on inventory audits by 65% through automated reconciliation",
+                        "Implemented advanced reporting that provided actionable insights for procurement",
+                        "Designed a database structure that improved query performance by 70%"
+                    ]
+                },
+                "ERP System Integration": {
+                    image: "https://readdy.ai/api/search-image?query=system%20integration%20project%2C%20connected%20software%20systems%2C%20API%20integration%20visualization%2C%20enterprise%20software%20architecture%2C%20professional%20IT%20systems%20diagram%2C%20technical%20system%20integration%2C%20detailed%20software%20connectivity&width=1200&height=800&seq=project3_large&orientation=landscape",
+                    description: "Successfully integrated multiple disparate business systems into a unified ERP solution for a growing company. The project involved data migration, API development, and custom integration solutions to ensure seamless data flow between previously siloed systems.",
+                    technologies: ["API Development", "Data Integration", "System Architecture", "Business Process Automation", "SAP"],
+                    achievements: [
+                        "Eliminated data silos, resulting in 100% data consistency across departments",
+                        "Reduced manual data entry by 90% through automated system integration",
+                        "Decreased report generation time from days to minutes through unified data access",
+                        "Implemented a solution that saved approximately 120 labor hours per month"
+                    ]
+                },
+                "Network Security Overhaul": {
+                    image: "https://readdy.ai/api/search-image?query=secure%20network%20implementation%2C%20cybersecurity%20visualization%2C%20firewall%20setup%2C%20network%20security%20architecture%2C%20professional%20IT%20security%20system%2C%20technical%20security%20implementation%2C%20detailed%20network%20protection&width=1200&height=800&seq=project4_large&orientation=landscape",
+                    description: "Implemented a comprehensive security overhaul for a financial institution's network infrastructure. The project included firewall configuration, intrusion detection systems, endpoint protection, and security policy development to protect sensitive financial data and ensure regulatory compliance.",
+                    technologies: ["Firewall Configuration", "IDS/IPS", "Security Policies", "Penetration Testing", "Compliance Management"],
+                    achievements: [
+                        "Achieved 100% compliance with financial industry security regulations",
+                        "Reduced security incidents by 95% through proactive threat detection",
+                        "Implemented a defense-in-depth strategy that mitigated multiple attack vectors",
+                        "Developed comprehensive security policies that balanced protection with usability"
+                    ]
+                },
+                "Legacy Data Migration": {
+                    image: "https://readdy.ai/api/search-image?query=data%20migration%20project%2C%20database%20transfer%20visualization%2C%20ETL%20process%2C%20professional%20data%20transformation%2C%20technical%20data%20migration%2C%20detailed%20database%20conversion%2C%20clean%20data%20transfer%20architecture&width=1200&height=800&seq=project5_large&orientation=landscape",
+                    description: "Successfully migrated critical business data from legacy systems to a modern database architecture for a manufacturing company. The project involved data extraction, transformation, and loading processes with zero data loss and minimal operational disruption.",
+                    technologies: ["ETL Processes", "Data Mapping", "Data Validation", "SQL", "Legacy Systems"],
+                    achievements: [
+                        "Migrated over 10 million records with 100% data integrity",
+                        "Completed the migration with only 4 hours of system downtime",
+                        "Improved data accessibility, reducing query times by 85%",
+                        "Implemented data validation processes that identified and corrected historical errors"
+                    ]
+                },
+                "Server Virtualization": {
+                    image: "https://readdy.ai/api/search-image?query=cloud%20infrastructure%20deployment%2C%20virtualization%20setup%2C%20server%20virtualization%2C%20professional%20cloud%20architecture%2C%20technical%20virtual%20environment%2C%20detailed%20cloud%20system%2C%20clean%20virtual%20server%20implementation&width=1200&height=800&seq=project6_large&orientation=landscape",
+                    description: "Designed and implemented a virtualized server environment for a growing business, consolidating physical servers into a virtualized infrastructure. The solution included resource allocation, high availability configuration, and disaster recovery planning to ensure business continuity.",
+                    technologies: ["VMware", "Hyper-V", "Resource Management", "High Availability", "Disaster Recovery"],
+                    achievements: [
+                        "Reduced hardware costs by 40% through server consolidation",
+                        "Decreased server provisioning time from weeks to hours",
+                        "Improved system uptime to 99.99% through high availability configuration",
+                        "Implemented disaster recovery capabilities with RPO of 15 minutes and RTO of 1 hour"
+                    ]
+                }
+            };
+            
+            viewProjectButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const projectTitle = this.parentElement.querySelector('h3').textContent;
+                    const details = projectDetails[projectTitle];
+                    
+                    modalTitle.textContent = projectTitle;
+                    modalImage.src = details.image;
+                    modalImage.alt = projectTitle;
+                    modalDescription.textContent = details.description;
+                    
+                    // Clear and populate technologies
+                    modalTechnologies.innerHTML = '';
+                    details.technologies.forEach(tech => {
+                        const techBadge = document.createElement('span');
+                        techBadge.className = 'bg-blue-100 text-primary px-3 py-1 rounded-full text-sm';
+                        techBadge.textContent = tech;
+                        modalTechnologies.appendChild(techBadge);
+                    });
+                    
+                    // Clear and populate achievements
+                    modalAchievements.innerHTML = '';
+                    details.achievements.forEach(achievement => {
+                        const achievementItem = document.createElement('li');
+                        achievementItem.textContent = achievement;
+                        modalAchievements.appendChild(achievementItem);
+                    });
+                    
+                    projectModal.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeModalButton.addEventListener('click', function() {
+                projectModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            projectModal.addEventListener('click', function(event) {
+                if (event.target === projectModal) {
+                    projectModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && !projectModal.classList.contains('hidden')) {
+                    projectModal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+
+    <script id="contact-form-script">
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                const consent = document.getElementById('consent').checked;
+                
+                // Validate form
+                let isValid = true;
+                let errorMessage = '';
+                
+                if (!name) {
+                    isValid = false;
+                    errorMessage += 'Please enter your name.\n';
+                }
+                
+                if (!email) {
+                    isValid = false;
+                    errorMessage += 'Please enter your email.\n';
+                } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+                    isValid = false;
+                    errorMessage += 'Please enter a valid email address.\n';
+                }
+                
+                if (!subject) {
+                    isValid = false;
+                    errorMessage += 'Please enter a subject.\n';
+                }
+                
+                if (!message) {
+                    isValid = false;
+                    errorMessage += 'Please enter a message.\n';
+                }
+                
+                if (!consent) {
+                    isValid = false;
+                    errorMessage += 'Please provide consent to store your information.\n';
+                }
+                
+                if (!isValid) {
+                    alert(errorMessage);
+                    return;
+                }
+                
+                // Form is valid, show success message (in a real application, you would send the data to a server)
+                alert('Thank you for your message! I will get back to you soon.');
+                contactForm.reset();
+            });
+        });
+    </script>
+</body>
+</html>
